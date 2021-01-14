@@ -5,9 +5,6 @@ let writeBtn = document.querySelector(".write");
 let saveBtn = document.querySelector(".save");
 let alertSavedBtn = document.querySelector(".alert-saved");
 let clear = document.querySelector(".clear");
-let alertData = (data) => {
-  alert(data);
-};
 let writeData = (data, elm) => {
   elm.innerText += " " + data;
 };
@@ -18,7 +15,7 @@ let clearDiv = (elm) => {
   elm.innerText = "";
 };
 alertbtn.addEventListener("click", () => {
-  alertData(inputText.value);
+  alert(inputText.value);
 });
 writeBtn.addEventListener("click", () => {
   let div = document.querySelector(".empty-div");
@@ -29,7 +26,7 @@ saveBtn.addEventListener("click", () => {
 });
 alertSavedBtn.addEventListener("click", () => {
   let data = localStorage.getItem("text");
-  alertData(data);
+  alert(data);
 });
 clear.addEventListener("click", () => {
   let div = document.querySelector(".empty-div");
