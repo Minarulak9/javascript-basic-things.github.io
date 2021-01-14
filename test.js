@@ -22,6 +22,7 @@ let mak= []
 arr.forEach(ele=>{
   if (!mak.includes(ele)) {
     mak.push(ele)
+    sdfk
   }
 })
 console.log(mak);
