@@ -1,0 +1,183 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+section{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:5px;
+    overflow: hidden;
+}
+section:nth-child(even){
+    background-color: rgb(240, 240, 240);
+}
+.main_heading{
+    margin-bottom: 100px;
+    text-align: center;
+}
+.con{
+   width: 45%;
+    height: 60vh;
+    /* background-color: red; */
+    /* border: 2px solid gray; */
+    border-radius: 10px;
+    box-shadow:5px 5px 17px -2px ;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+.btn-div{
+    text-align: center;
+}
+/* one (input and output) START*/
+.one .heading{
+    padding: 10px;
+    text-align: center;
+}
+.text_input{
+    width: 50%;
+    padding: 5px;
+    margin: 10px;
+}
+.btn{
+    padding: 10px;
+    width: 200px;
+    margin: 10px;
+    cursor: pointer;
+}
+.empty-div{
+    width: 50%;
+    height: 200px;
+    background-color: rgb(231, 231, 231);
+    padding: 20px;
+    border-radius: 12px;
+    overflow: auto;
+}
+/* one End here*/
+
+/* tow START */
+.two .heading{
+    padding: 10px;
+    text-align: center;
+}
+.two .box-con{
+    width: 50%;
+    height: 100px;
+    margin:0 auto;
+}
+.two .box{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(201, 201, 201);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.two .box-remove{
+    visibility: hidden;
+}
+.two button{
+    padding: 10px;
+    width: 150px;
+    margin: 10px;
+}
+.remove-h{
+    visibility: hidden;
+}
+/* tow End here */
+/* three START here */
+.three .heading{
+    padding: 10px;
+}
+.three .box{
+    width: 50%;
+    height: 200px;
+    background-color:rgb(224, 224, 224);
+    margin: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 3px 3px 15px 0px rgb(138, 138, 138);
+}
+.three .inside-box{
+    position: absolute;
+    display: inline-block;
+    width: 50%;
+    height: 50%;
+    background-color: rgb(0, 0, 0);
+}
+.inside-box-animation{
+    animation: animate 2s linear infinite;
+    
+}
+@keyframes animate{
+    25%{
+        transform: translate(0,100%);
+    }
+    50%{
+        transform: translate(100%,100%) ;    
+    }
+    75%{
+        transform: translate(100%,0%);  
+    }
+    100%{
+        transform: translateY(0%,0%);
+    }
+}
+
+/* three End here */
+/* four START here */
+.inp{
+    margin:20px;
+}
+.inp input{
+    padding:3px 5px;
+}
+.four form{
+    margin-top: 30px;
+}
+.login-page{
+    /* display: none; */
+    margin-top: 30px;
+}
+.profile-page{
+    /* display: none; */
+    margin: 80px 0 20px 0;
+}
+.hide{
+    display: none;
+}
+.user-name,.user-password{
+    padding: 6px;
+    background-color: rgb(184, 184, 184);
+    margin: 10px;
+    font-size: 1.5rem;
+}
+.msg{
+    padding: 10px;
+    margin: 10px;
+    background-color: rgba(132, 255, 132, 0.459);
+    display: none;
+}
+.show-msg{
+    display: block;
+}
+.heading{
+    text-align: center;
+}
+/* media */
+@media only screen and (max-width:650px){
+    .con{
+        width: 95%
+    }
+    .three .box{
+        width: 75%;
+    }
+}
