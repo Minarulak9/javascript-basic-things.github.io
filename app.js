@@ -105,7 +105,6 @@ let showMsg = (msg) => {
   }, 2000);
 };
 let data = [];
-let authUser = () => {};
 // login funtion------------------
 let login = document.querySelector(".login");
 login.addEventListener("click", () => {
