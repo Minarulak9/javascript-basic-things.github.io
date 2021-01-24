@@ -218,3 +218,396 @@ function createAccount() {
   username.value = "";
   pass.value = "";
 }
+
+// four is End here...
+// five START here=>
+let password = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  "~",
+  "!",
+  "@",
+  "#",
+  "$",
+  "&",
+  "/",
+  "-",
+  "+",
+  "?",
+]; //this is password list array
+let savedPassword = []; //here your used password saved
+let generatePass = (arr) => {
+  //thsi fuction generate a randome index upto password array lenght
+  let randomIndex = () => {
+    return Math.floor(Math.random() * arr.length);
+  };
+  let pass = "";
+  let i = 0;
+  while (i < 14) {
+    pass += password[randomIndex()];
+    i++;
+  }
+  return pass;
+};
+let generateBtn = document.querySelector(".generate");
+let passList = document.querySelector(".password-list");
+createEle();
+generateBtn.addEventListener("click", () => {
+  createEle();
+});
+function createEle() {
+  let li = document.createElement("li");
+  let input = document.createElement("input");
+  let btn = document.createElement("button");
+  input.classList.add("pass");
+  input.value = generatePass(password);
+  input.setAttribute("readonly", "readonly");
+  btn.classList.add("copy-btn");
+  btn.innerHTML = "Copy";
+  passList.appendChild(li);
+  li.appendChild(input);
+  li.appendChild(btn);
+}
+passList.addEventListener("click", (e) => {
+  //copy btn working (copy the text,saved to the localstorage)
+  if (e.target.className == "copy-btn") {
+    e.target.parentElement.firstElementChild.select();
+    document.execCommand("copy");
+    let savedData = localStorage.getItem("savedPass");
+    if (savedData == null) {
+      savedPassword = [];
+      savedPassword.push(e.target.parentElement.firstElementChild.value);
+      localStorage.setItem("savedPass", JSON.stringify(savedPassword));
+    } else {
+      savedPassword = JSON.parse(savedData);
+      if (
+        savedPassword.indexOf(e.target.parentElement.firstElementChild.value) ==
+        -1
+      ) {
+        savedPassword.push(e.target.parentElement.firstElementChild.value);
+        localStorage.setItem("savedPass", JSON.stringify(savedPassword));
+      }
+    }
+    let lis = Array.from(e.target.parentElement.parentElement.children);
+    lis.forEach((li) => {
+      li.lastElementChild.innerText = "Copy";
+    });
+    e.target.innerText = "Copied";
+  }
+});
+let savedPassBtn = document.querySelector(".saved");
+let savedPassCon = document.querySelector(".saved-pass");
+savedPassBtn.addEventListener("click", () => {
+  savedPassCon.style.display = "block";
+  updateSavedPass();
+});
+window.addEventListener("click", (e) => {
+  let section = document.querySelector("#five");
+  let con = document.querySelector(".five");
+  let close = document.querySelector(".five .close").firstElementChild;
+  let ul = document.querySelector(".password-list");
+  if (
+    e.target == section ||
+    e.target == close ||
+    e.target == con ||
+    e.target == ul
+  ) {
+    savedPassCon.style.display = "none";
+  }
+});
+function updateSavedPass() {
+  //update saved password
+  let savedData = localStorage.getItem("savedPass");
+  if (savedData == null) {
+    savedPassword = [];
+  } else {
+    savedPassword = JSON.parse(savedData);
+    var ul = document.querySelector(".saved-list");
+    ul.innerHTML = "";
+    savedPassword.forEach((pass) => {
+      let li = document.createElement("li");
+      let span = document.createElement("span");
+      let deleteBtn = document.createElement("button");
+      deleteBtn.innerText = "delete";
+      span.innerText = pass;
+      deleteBtn.className = "delete copy-btn";
+      ul.appendChild(li);
+      li.appendChild(span);
+      li.appendChild(deleteBtn);
+    });
+  }
+}
+savedPassCon.addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete")) {
+    savedPassword = JSON.parse(localStorage.getItem("savedPass"));
+    savedPassword.splice(
+      savedPassword.indexOf(e.target.parentElement.firstElementChild.innerText),
+      1
+    );
+    localStorage.setItem("savedPass", JSON.stringify(savedPassword));
+    let ul = document.querySelector(".saved-list");
+    e.target.parentElement.style.backgroundColor = "white";
+    e.target.parentElement.style.color = "white";
+    e.target.style.backgroundColor = "white";
+    e.target.style.color = "white";
+    setTimeout(() => {
+      ul.removeChild(e.target.parentElement);
+    }, 300);
+  }
+});
+// five is End here...
+// six START here=>
+const quizes = [
+  {
+    question: "Which of the following is correct about features of JavaScript?",
+    opt1: "JavaScript is a lightweight, interpreted programming language.",
+    opt2: "JavaScript is designed for creating network-centric applications.",
+    opt3: "JavaScript is complementary to and integrated with Java.",
+    opt4: "All of the above.",
+    ans: "opt4",
+  },
+  {
+    question:
+      "Which of the following function of Number object returns a string value version of the current number?",
+    opt1: " toString()",
+    opt2: "toFixed()",
+    opt3: "toLocaleString()",
+    opt4: "toPrecision()",
+    ans: "opt1",
+  },
+  {
+    question:
+      " Which of the following function of Array object joins all elements of an array into a string?",
+    opt1: "map()",
+    opt2: "split()",
+    opt3: "join()",
+    opt4: "concat()",
+    ans: "opt3",
+  },
+  {
+    question: "Inside which HTML element do we put the JavaScript?",
+    opt1: "<js>",
+    opt2: "<script>",
+    opt3: "<javascript>",
+    opt4: "<scripting",
+    ans: "opt2",
+  },
+  {
+    question: "How do you write 'Hello World' in an alert box?",
+    opt1: "msgBox('Hello World')",
+    opt2: "msg('Hello World')",
+    opt3: "alertBox('Hello World')",
+    opt4: "alert('Hello World')",
+    ans: "opt4",
+  },
+  {
+    question: "How do you create a function in JavaScript?",
+    opt1: "let myFunction = function(){----}",
+    opt2: "function:myFunction(){----}",
+    opt3: "function myFunction(){----}",
+    opt4: "Both 'a' and 'c'",
+    ans: "opt4",
+  },
+  {
+    question: "How do you call a function named 'myFunction'?",
+    opt1: "myFunction()",
+    opt2: "calling myFunction()",
+    opt3: "call function myFunction()",
+    opt4: "myFunction call()",
+    ans: "opt1",
+  },
+  {
+    question: "How to write an IF statement in JavaScript?",
+    opt1: "if i=5",
+    opt2: "if i==5 then",
+    opt3: "if(i==5)",
+    opt4: "if (i=5) then",
+    ans: "opt3",
+  },
+  {
+    question: "How does a WHILE loop start?",
+    opt1: "while(i>10)",
+    opt2: "while i=1 to 10",
+    opt3: "while{i==10}",
+    opt4: "while(i>10;i++)",
+    ans: "opt1",
+  },
+  {
+    question: "How can you add a comment in a JavaScript?",
+    opt1: "#this is a comment",
+    opt2: "//this is a commnet",
+    opt3: "<!--this is a comment-->",
+    opt4: "^^this is a comment",
+    ans: "opt2",
+  },
+  {
+    question: "Which type of JavaScript language is?",
+    opt1: "Object-Oriented",
+    opt2: "Object-Based",
+    opt3: "Assembly-language",
+    opt4: "High-level",
+    ans: "opt2",
+  },
+  {
+    question:
+      " When interpreter encounters an empty statements, what it will do ?",
+    opt1: "Shows a warning",
+    opt2: "Prompts to complete the statement",
+    opt3: "Throws an error",
+    opt4: "Ignores the statements",
+    ans: "opt4",
+  },
+  {
+    question: "The 'function' and ' var' are known as?",
+    opt1: "Keywords",
+    opt2: "Data types",
+    opt3: "Declaration statements",
+    opt4: "Prototypes",
+    ans: "opt3",
+  },
+  {
+    question:
+      "In the JavaScript, which one of the following is not considered as an error?",
+    opt1: "Syntax error",
+    opt2: "Missing of semicolons",
+    opt3: "Division by zero",
+    opt4: "Missing of Bracket",
+    ans: "opt3",
+  },
+  {
+    question: "Which one of the following is an ternary operator?",
+    opt1: "?",
+    opt2: "??",
+    opt3: "!",
+    opt4: "+",
+    ans: "opt1",
+  },
+];
+let currentQuestion = 0;
+const question = document.querySelector(".question");
+const options = document.querySelectorAll(".option");
+const submit = document.querySelector(".submit-quize");
+const score = document.querySelector(".score");
+const opt = document.querySelectorAll("input[type ='radio']");
+const resetQuize = document.querySelector(".reset_quize");
+const loadQuestion = () => {
+  let quize = quizes[currentQuestion];
+  question.textContent =
+    currentQuestion + 1 + "/" + quizes.length + ": " + quize.question;
+  options[0].textContent = quize.opt1;
+  options[1].textContent = quize.opt2;
+  options[2].textContent = quize.opt3;
+  options[3].textContent = quize.opt4;
+};
+const endQuize = () => {
+  const rightq = document.querySelector(".right");
+  const wrongq = document.querySelector(".wrong");
+  const tottalScore = document.querySelector(".tottal_score");
+  const persentage = (right/quizes.length*100).toFixed(2)
+  submit.setAttribute("disabled", "disabled");
+  score.style.display = "block";
+  rightq.textContent = `your right ans is: ${right} `;
+  wrongq.textContent = `your wrong ans is: ${wrong} `;
+  tottalScore.textContent = `your tottal score is: ${persentage} %`;
+    rightq.style.color="green"
+    wrongq.style.color="red"
+};
+let right = 0,
+  wrong = 0;
+const checkQuize = () => {
+  opt.forEach((option) => {
+    if (option.checked) {
+      let quize = quizes[currentQuestion];
+      if (quize.ans == option.id) {
+        right++;
+      } else {
+        wrong++;
+      }
+    }
+  });
+};
+loadQuestion();
+submit.addEventListener("click", () => {
+  checkQuize();
+  if (currentQuestion == quizes.length - 1) {
+    endQuize();
+  }
+  if (currentQuestion < quizes.length - 1) {
+    currentQuestion++;
+    loadQuestion();
+  }
+  opt.forEach((option) => {
+    option.checked = false;
+  });
+});
+resetQuize.addEventListener("click", () => {
+  currentQuestion = 0;
+  submit.removeAttribute("disabled");
+  loadQuestion();
+  score.style.display = "none";
+});
+
+let mainHeading = document.querySelector(".main_heading");
+mainHeading.addEventListener("click", () => {
+  window.scrollTo(0, 3600);
+});

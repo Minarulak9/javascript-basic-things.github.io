@@ -172,12 +172,140 @@ section:nth-child(even){
 .heading{
     text-align: center;
 }
+
+
+/* four End here */
+/* five START here */
+.five .heading{
+    margin: 30px 0;
+}
+.five{
+    position: relative;
+}
+.five ul{
+    width: 100%;
+    height: 70%;
+    overflow: auto;
+}
+.five li{
+    list-style: none;
+    padding: 10px;
+    width: 70%;
+    background-color: rgb(224, 224, 224);
+    margin:8px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    animation: liAnimate .2s linear 1;
+}
+.five li .pass{
+    background-color: rgb(224, 224, 224);
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    
+}
+.five li .copy-btn{
+    /* float: right; */
+    padding: 12.3px 15px; 
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+.five li .copy-btn:active{
+    background-color:rgb(224, 224, 224);
+}
+.five .saved-pass{
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    background-color: rgb(255, 255, 255);
+    animation: savedPassAnimate .3s linear;
+    display: none;
+    box-shadow: 5px 5px 15px -2px;
+}
+.five .close{
+    float: right;
+    cursor: pointer;
+}
+.five .saved-pass li{
+    transition:all .5s;
+}
+.five .saved-list{
+    transition:all .5s;
+}
+@keyframes liAnimate{
+    0%{
+        top: -50px;
+        width: 60%;
+    }
+    100%{
+        top: 0;
+        width: 70%;
+    }
+}
+@keyframes savedPassAnimate{
+    0%{
+        top: -70%;
+        left: 0;
+    }
+    100%{
+        top: 50%;
+        left: 50%;
+    }
+}
+/* five End here*/
+
+/* six START */
+.six{
+    padding:15px 4rem;
+}
+.six .heading{
+    margin-bottom:30px;
+}
+.six li{
+    list-style:lower-alpha;
+    padding: 10px 0;
+}
+.six li label{
+    padding: 10px 0;
+}
+.six li label:hover{
+    cursor: pointer;
+}
+.six li:hover{
+    background-color: rgb(223, 223, 223);
+}
+.question{
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+.score{
+    display: none;
+    font-size: 1.1rem;
+}
+
 /* media */
-@media only screen and (max-width:650px){
+@media only screen and (max-width:950px){
     .con{
         width: 95%
     }
     .three .box{
         width: 75%;
+    }
+    .five .saved-pass{
+       width: 95%;
+    }
+    .five .saved-pass li{
+        width: 90%;
+    }
+    .six{
+        padding: 10px;
     }
 }
