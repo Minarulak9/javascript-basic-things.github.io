@@ -563,14 +563,14 @@ const endQuize = () => {
   const rightq = document.querySelector(".right");
   const wrongq = document.querySelector(".wrong");
   const tottalScore = document.querySelector(".tottal_score");
-  const persentage = (right/quizes.length*100).toFixed(2)
+  const persentage = ((right / quizes.length) * 100).toFixed(2);
   submit.setAttribute("disabled", "disabled");
   score.style.display = "block";
   rightq.textContent = `your right ans is: ${right} `;
   wrongq.textContent = `your wrong ans is: ${wrong} `;
   tottalScore.textContent = `your tottal score is: ${persentage} %`;
-    rightq.style.color="green"
-    wrongq.style.color="red"
+  rightq.style.color = "green";
+  wrongq.style.color = "red";
 };
 let right = 0,
   wrong = 0;
@@ -610,4 +610,205 @@ resetQuize.addEventListener("click", () => {
 let mainHeading = document.querySelector(".main_heading");
 mainHeading.addEventListener("click", () => {
   window.scrollTo(0, 3600);
+});
+// six is End here...
+// seven START here=>
+let pendingCon = document.querySelector(".pending");
+let doneCon = document.querySelector(".done");
+// make active container
+doneCon.addEventListener("click", () => {
+  doneCon.style.height = "300px";
+  pendingCon.style.height = "100px";
+  doneCon.style.boxShadow = "0px 0px 25px -10px";
+  pendingCon.style.boxShadow = "none";
+});
+// make active container
+pendingCon.addEventListener("click", () => {
+  pendingCon.style.height = "300px";
+  doneCon.style.height = "100px";
+  pendingCon.style.boxShadow = "0px 0px 25px -10px";
+  doneCon.style.boxShadow = "none";
+});
+
+const addBtn = document.querySelector(".add-todo");
+const userInput = document.querySelector(".user-input");
+let todos = [];
+// create todo obj
+class Todo {
+  constructor(todo, isComplete) {
+    this.todo = todo;
+    this.isComplete = isComplete;
+  }
+}
+const saveTodo = () => {
+  //save todos(data) to localstorage
+  let savedTodo = localStorage.getItem("saved-todo");
+  if (savedTodo == null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(savedTodo);
+  }
+  todos.push(new Todo(userInput.value, false));
+  localStorage.setItem("saved-todo", JSON.stringify(todos));
+};
+const updateTodoList = () => {
+  //list updating on reload and fetch data to localstorage
+  let savedTodo = localStorage.getItem("saved-todo");
+  if (savedTodo == null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(savedTodo);
+  }
+  todos.forEach((elm) => {
+    if (!elm.isComplete) {
+      pendingCon.innerHTML += `<li><span class="todo">${elm.todo}</span>
+                    <div>
+                        <button class="complete"><img class="right" src="./img/right.png" alt=""></button>
+                        <button class="delete"><img class="del"src ="./img/delete.png" alt=""></button>
+                    </div>
+                </li>`;
+    } else {
+      doneCon.innerHTML += `<li><span class="todo">${elm.todo}</span>
+                    <div>
+                        <button class="complete"><img class="right" src="./img/right.png" alt=""></button>
+                        <button class="delete"><img class="del"src ="./img/delete.png" alt=""></button>
+                    </div>
+                </li>`;
+    }
+  });
+};
+updateTodoList();
+const createTodoList = () => {
+  //create todo fuction (UI)
+  let li = document.createElement("li");
+  let span = document.createElement("span");
+  let div = document.createElement("div");
+  let rightBtn = document.createElement("button");
+  let delBtn = document.createElement("button");
+  let imgRight = document.createElement("img");
+  let imgDel = document.createElement("img");
+  span.textContent = userInput.value;
+  rightBtn.className = "complete";
+  delBtn.className = "delete";
+  imgRight.className = "right";
+  imgDel.className = "del";
+  imgRight.src = "./img/right.png";
+  imgDel.src = "./img/delete.png";
+  pendingCon.appendChild(li);
+  li.appendChild(span);
+  li.appendChild(div);
+  div.appendChild(rightBtn);
+  div.appendChild(delBtn);
+  rightBtn.appendChild(imgRight);
+  delBtn.appendChild(imgDel);
+};
+const removingTodo = (element)=>{
+  // for better user exprieance.....create some animation before removing
+  element.style.height = "0px";
+  element.style.padding = "0px";
+  element.style.margin = "0px";
+  element.style.overflow = "hidden";
+}
+const addingTodo = (element)=>{
+  // for better user exprieance.....create some animation before adding
+  element.style.height = "auto";
+  element.style.padding = "8px";
+  element.style.margin = "0 0 8px 0";
+}
+const deleteTodo = (e) => {
+  let savedData = localStorage.getItem("saved-todo");
+  if (savedData == null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(savedData);
+  }
+  if (e.target.className == "delete" || e.target.className == "del") {
+    let currentElement = "";
+    e.target.className == "del"
+      ? (currentElement =
+          e.target.parentElement.parentElement.parentElement.firstElementChild)
+      : (currentElement =
+          e.target.parentElement.parentElement.firstElementChild);
+    let del = "";
+    todos.forEach((elm, index) => {
+      if (elm.todo == currentElement.textContent) {
+        del = index;
+      }
+    });
+    todos.splice(del, 1);
+    localStorage.setItem("saved-todo", JSON.stringify(todos));
+    removingTodo(currentElement.parentElement)
+    setTimeout(() => {
+      currentElement.parentElement.remove();
+    }, 300);
+  }
+};
+const toggleTodo = (e) => {
+  let savedData = localStorage.getItem("saved-todo");
+  if (savedData == null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(savedData);
+  }
+  if (e.target.className == "complete" || e.target.className == "right") {
+    let currentElement = "";
+    e.target.className == "right"
+      ? (currentElement =
+          e.target.parentElement.parentElement.parentElement.firstElementChild)
+      : (currentElement =
+          e.target.parentElement.parentElement.firstElementChild);
+    let elemIndex = "";
+    todos.forEach((ele, index) => {
+      if (ele.todo == currentElement.textContent) {
+        elemIndex = index;
+      }
+    });
+    if (todos[elemIndex].isComplete) {
+      todos[elemIndex].isComplete = false;
+    } else {
+      todos[elemIndex].isComplete = true;
+    }
+    localStorage.setItem("saved-todo", JSON.stringify(todos));
+    if (
+      currentElement.parentElement.parentElement.classList.contains("pending")
+    ) {
+      removingTodo(currentElement.parentElement)
+      setTimeout(() => {
+        let complete = document.adoptNode(currentElement.parentElement);
+        doneCon.appendChild(complete);
+       addingTodo(currentElement.parentElement)
+      }, 300);
+    } else {
+      removingTodo(currentElement.parentElement)
+      setTimeout(() => {
+        let complete = document.adoptNode(currentElement.parentElement);
+        pendingCon.appendChild(complete);
+        addingTodo(currentElement.parentElement)
+      }, 300);
+    }
+  }
+};
+addBtn.addEventListener("click", () => {
+  // add button working
+  saveTodo();
+  createTodoList();
+  userInput.value = "";
+});
+userInput.addEventListener("keypress", (e) => {
+  // enter to click add button
+  if (e.keyCode == 13) {
+    addBtn.click();
+  }
+});
+pendingCon.addEventListener("click", (e) => {
+  // deleting todo 
+  // complete todo 
+  deleteTodo(e);
+  toggleTodo(e);
+});
+doneCon.addEventListener("click", (e) => {
+  // deleting todo
+  // uncompleting todo
+  deleteTodo(e);
+  toggleTodo(e);
 });

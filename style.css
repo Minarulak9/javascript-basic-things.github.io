@@ -1,311 +1,433 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-section{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding:5px;
-    overflow: hidden;
+section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  overflow: hidden;
 }
-section:nth-child(even){
-    background-color: rgb(240, 240, 240);
+section:nth-child(even) {
+  background-color: rgb(240, 240, 240);
 }
-.main_heading{
-    margin-bottom: 100px;
-    text-align: center;
+.main_heading {
+  margin-bottom: 100px;
+  text-align: center;
 }
-.con{
-   width: 45%;
-    height: 60vh;
-    /* background-color: red; */
-    /* border: 2px solid gray; */
-    border-radius: 10px;
-    box-shadow:5px 5px 17px -2px ;
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: auto;
+.con {
+  width: 45%;
+  height: 60vh;
+  /* background-color: red; */
+  /* border: 2px solid gray; */
+  border-radius: 10px;
+  box-shadow: 5px 5px 17px -2px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
 }
-.btn-div{
-    text-align: center;
+.btn-div {
+  text-align: center;
 }
 /* one (input and output) START*/
-.one .heading{
-    padding: 10px;
-    text-align: center;
+.one .heading {
+  padding: 10px;
+  text-align: center;
 }
-.text_input{
-    width: 50%;
-    padding: 5px;
-    margin: 10px;
+.text_input {
+  width: 50%;
+  padding: 5px;
+  margin: 10px;
 }
-.btn{
-    padding: 10px;
-    width: 200px;
-    margin: 10px;
-    cursor: pointer;
+.btn {
+  padding: 10px;
+  width: 200px;
+  margin: 10px;
+  cursor: pointer;
 }
-.empty-div{
-    width: 50%;
-    height: 200px;
-    background-color: rgb(231, 231, 231);
-    padding: 20px;
-    border-radius: 12px;
-    overflow: auto;
+.empty-div {
+  width: 50%;
+  height: 200px;
+  background-color: rgb(231, 231, 231);
+  padding: 20px;
+  border-radius: 12px;
+  overflow: auto;
 }
 /* one End here*/
 
 /* tow START */
-.two .heading{
-    padding: 10px;
-    text-align: center;
+.two .heading {
+  padding: 10px;
+  text-align: center;
 }
-.two .box-con{
-    width: 50%;
-    height: 100px;
-    margin:0 auto;
+.two .box-con {
+  width: 50%;
+  height: 100px;
+  margin: 0 auto;
 }
-.two .box{
-    width: 100%;
-    height: 100%;
-    background-color: rgb(201, 201, 201);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+.two .box {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(201, 201, 201);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
-.two .box-remove{
-    visibility: hidden;
+.two .box-remove {
+  visibility: hidden;
 }
-.two button{
-    padding: 10px;
-    width: 150px;
-    margin: 10px;
+.two button {
+  padding: 10px;
+  width: 150px;
+  margin: 10px;
 }
-.remove-h{
-    visibility: hidden;
+.remove-h {
+  visibility: hidden;
 }
 /* tow End here */
 /* three START here */
-.three .heading{
-    padding: 10px;
+.three .heading {
+  padding: 10px;
 }
-.three .box{
-    width: 50%;
-    height: 200px;
-    background-color:rgb(224, 224, 224);
-    margin: 10px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 3px 3px 15px 0px rgb(138, 138, 138);
+.three .box {
+  width: 50%;
+  height: 200px;
+  background-color: rgb(224, 224, 224);
+  margin: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 3px 3px 15px 0px rgb(138, 138, 138);
 }
-.three .inside-box{
-    position: absolute;
-    display: inline-block;
-    width: 50%;
-    height: 50%;
-    background-color: rgb(0, 0, 0);
+.three .inside-box {
+  position: absolute;
+  display: inline-block;
+  width: 50%;
+  height: 50%;
+  background-color: rgb(0, 0, 0);
 }
-.inside-box-animation{
-    animation: animate 2s linear infinite;
-    
+.inside-box-animation {
+  animation: animate 2s linear infinite;
 }
-@keyframes animate{
-    25%{
-        transform: translate(0,100%);
-    }
-    50%{
-        transform: translate(100%,100%) ;    
-    }
-    75%{
-        transform: translate(100%,0%);  
-    }
-    100%{
-        transform: translateY(0%,0%);
-    }
+@keyframes animate {
+  25% {
+    transform: translate(0, 100%);
+  }
+  50% {
+    transform: translate(100%, 100%);
+  }
+  75% {
+    transform: translate(100%, 0%);
+  }
+  100% {
+    transform: translateY(0%, 0%);
+  }
 }
 
 /* three End here */
 /* four START here */
-.inp{
-    margin:20px;
+.inp {
+  margin: 20px;
 }
-.inp input{
-    padding:3px 5px;
+.inp input {
+  padding: 3px 5px;
 }
-.four form{
-    margin-top: 30px;
+.four form {
+  margin-top: 30px;
 }
-.login-page{
-    /* display: none; */
-    margin-top: 30px;
+.login-page {
+  /* display: none; */
+  margin-top: 30px;
 }
-.profile-page{
-    /* display: none; */
-    margin: 80px 0 20px 0;
+.profile-page {
+  /* display: none; */
+  margin: 80px 0 20px 0;
 }
-.hide{
-    display: none;
+.hide {
+  display: none;
 }
-.user-name,.user-password{
-    padding: 6px;
-    background-color: rgb(184, 184, 184);
-    margin: 10px;
-    font-size: 1.5rem;
+.user-name,
+.user-password {
+  padding: 6px;
+  background-color: rgb(184, 184, 184);
+  margin: 10px;
+  font-size: 1.5rem;
 }
-.msg{
-    padding: 10px;
-    margin: 10px;
-    background-color: rgba(132, 255, 132, 0.459);
-    display: none;
+.msg {
+  padding: 10px;
+  margin: 10px;
+  background-color: rgba(132, 255, 132, 0.459);
+  display: none;
 }
-.show-msg{
-    display: block;
+.show-msg {
+  display: block;
 }
-.heading{
-    text-align: center;
+.heading {
+  text-align: center;
 }
-
 
 /* four End here */
 /* five START here */
-.five .heading{
-    margin: 30px 0;
+.five .heading {
+  margin: 30px 0;
 }
-.five{
-    position: relative;
+.five {
+  position: relative;
 }
-.five ul{
-    width: 100%;
-    height: 70%;
-    overflow: auto;
+.five ul {
+  width: 100%;
+  height: 70%;
+  overflow: auto;
 }
-.five li{
-    list-style: none;
-    padding: 10px;
-    width: 70%;
-    background-color: rgb(224, 224, 224);
-    margin:8px auto;
-    position: relative;
-    overflow: hidden;
-    border-radius: 8px;
-    animation: liAnimate .2s linear 1;
+.five li {
+  list-style: none;
+  padding: 10px;
+  width: 70%;
+  background-color: rgb(224, 224, 224);
+  margin: 8px auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  animation: liAnimate 0.2s linear 1;
 }
-.five li .pass{
-    background-color: rgb(224, 224, 224);
-    border: none;
-    outline: none;
-    font-size: 1rem;
-    
+.five li .pass {
+  background-color: rgb(224, 224, 224);
+  border: none;
+  outline: none;
+  font-size: 1rem;
 }
-.five li .copy-btn{
-    /* float: right; */
-    padding: 12.3px 15px; 
-    position: absolute;
+.five li .copy-btn {
+  /* float: right; */
+  padding: 12.3px 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+.five li .copy-btn:active {
+  background-color: rgb(224, 224, 224);
+}
+.five .saved-pass {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  background-color: rgb(255, 255, 255);
+  animation: savedPassAnimate 0.3s linear;
+  display: none;
+  box-shadow: 5px 5px 15px -2px;
+}
+.five .close {
+  float: right;
+  cursor: pointer;
+}
+.five .saved-pass li {
+  transition: all 0.5s;
+}
+.five .saved-list {
+  transition: all 0.5s;
+}
+@keyframes liAnimate {
+  0% {
+    top: -50px;
+    width: 60%;
+  }
+  100% {
     top: 0;
-    right: 0;
-    cursor: pointer;
-    border: none;
-    outline: none;
+    width: 70%;
+  }
 }
-.five li .copy-btn:active{
-    background-color:rgb(224, 224, 224);
-}
-.five .saved-pass{
-    width: 80%;
-    height: 80%;
-    position: absolute;
-    transform: translate(-50%,-50%);
+@keyframes savedPassAnimate {
+  0% {
+    top: -70%;
+    left: 0;
+  }
+  100% {
     top: 50%;
     left: 50%;
-    background-color: rgb(255, 255, 255);
-    animation: savedPassAnimate .3s linear;
-    display: none;
-    box-shadow: 5px 5px 15px -2px;
-}
-.five .close{
-    float: right;
-    cursor: pointer;
-}
-.five .saved-pass li{
-    transition:all .5s;
-}
-.five .saved-list{
-    transition:all .5s;
-}
-@keyframes liAnimate{
-    0%{
-        top: -50px;
-        width: 60%;
-    }
-    100%{
-        top: 0;
-        width: 70%;
-    }
-}
-@keyframes savedPassAnimate{
-    0%{
-        top: -70%;
-        left: 0;
-    }
-    100%{
-        top: 50%;
-        left: 50%;
-    }
+  }
 }
 /* five End here*/
 
 /* six START */
-.six{
-    padding:15px 4rem;
+.six {
+  padding: 15px 4rem;
 }
-.six .heading{
-    margin-bottom:30px;
+.six .heading {
+  margin-bottom: 30px;
 }
-.six li{
-    list-style:lower-alpha;
-    padding: 10px 0;
+.six li {
+  list-style: lower-alpha;
+  padding: 10px 0;
 }
-.six li label{
-    padding: 10px 0;
+.six li label {
+  padding: 10px 0;
 }
-.six li label:hover{
-    cursor: pointer;
+.six li label:hover {
+  cursor: pointer;
 }
-.six li:hover{
-    background-color: rgb(223, 223, 223);
+.six li:hover {
+  background-color: rgb(223, 223, 223);
 }
-.question{
-    font-weight: bold;
-    font-size: 1.1rem;
+.question {
+  font-weight: bold;
+  font-size: 1.1rem;
 }
-.score{
-    display: none;
-    font-size: 1.1rem;
+.score {
+  display: none;
+  font-size: 1.1rem;
 }
 
+/* six End here */
+/* seven START here */
+.seven {
+  height: 80vh;
+}
+.seven .input {
+  width: 80%;
+  margin: 15px 0;
+  position: relative;
+}
+.seven .user-input {
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 5px;
+  outline: none;
+  border: 2px solid rgb(155, 155, 155);
+  border-radius: 10px;
+}
+.add-todo {
+  padding: 6.5px 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* background: none; */
+}
+.add-todo:hover {
+  cursor: pointer;
+}
+.list-todo {
+  width: 68%;
+  height: 300px;
+  overflow: auto;
+  transition: all 0.3s;
+  border-radius: 8px;
+}
+.list-todo h2 {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.list-todo:hover {
+  cursor: pointer;
+}
+.pending {
+  background-color: rgb(226, 226, 226);
+}
+.pending:hover {
+  background-color: rgb(199, 199, 199);
+}
+.done {
+  height: 100px;
+  background-color: rgb(226, 226, 226);
+  margin-top: 10px;
+}
+.done:hover {
+  background-color: rgb(199, 199, 199);
+}
+.list-todo li {
+  padding: 8px;
+  font-size: 1.1rem;
+  margin: 0 0 8px 0;
+  background-color: rgb(241, 241, 241);
+  position: relative;
+  border-radius: 10px;
+  transition: all 0.3s;
+  animation: todo-animate 0.3s linear 1;
+}
+.list-todo li div {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.seven .complete,
+.seven .delete {
+  padding: 10px;
+  background: none;
+  border: none;
+  outline: none;
+}
+.seven .complete img,
+.seven .delete img {
+  width: 15px;
+  height: 15px;
+}
+.seven .complete:hover,
+.seven .delete:hover {
+  background-color: rgb(207, 207, 207);
+  cursor: pointer;
+}
+.seven .complete:active,
+.seven .delete:active {
+  background-color: rgb(180, 180, 180);
+}
+@keyframes todo-animate {
+  0% {
+    top: -20px;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
 /* media */
-@media only screen and (max-width:950px){
-    .con{
-        width: 95%
-    }
-    .three .box{
-        width: 75%;
-    }
-    .five .saved-pass{
-       width: 95%;
-    }
-    .five .saved-pass li{
-        width: 90%;
-    }
-    .six{
-        padding: 10px;
-    }
+@media only screen and (max-width: 950px) {
+  .con {
+    width: 95%;
+  }
+  .three .box {
+    width: 75%;
+  }
+  .five .saved-pass {
+    width: 95%;
+  }
+  .five .saved-pass li {
+    width: 90%;
+  }
+  .six {
+    padding: 10px;
+  }
+  .seven .input {
+    width: 95%;
+  }
+  .list-todo {
+    width: 90%;
+  }
+  .list-todo h2 {
+    font-size: 0.9rem;
+  }
+  .notice{
+    display: none;
+  }
+}
+.notice {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 127, 80, 0.644);
 }
