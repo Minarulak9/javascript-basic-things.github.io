@@ -298,6 +298,7 @@ section:nth-child(even) {
   width: 80%;
   margin: 15px 0;
   position: relative;
+  overflow: hidden;
 }
 .seven .user-input {
   font-size: 1.2rem;
@@ -322,7 +323,7 @@ section:nth-child(even) {
   height: 300px;
   overflow: auto;
   transition: all 0.3s;
-  border-radius: 8px;
+  border-radius: 3px;
 }
 .list-todo h2 {
   text-align: center;
@@ -337,7 +338,7 @@ section:nth-child(even) {
   background-color: rgb(226, 226, 226);
 }
 .pending:hover {
-  background-color: rgb(199, 199, 199);
+  background-color: rgb(226, 226, 226);
 }
 .done {
   height: 100px;
@@ -345,7 +346,7 @@ section:nth-child(even) {
   margin-top: 10px;
 }
 .done:hover {
-  background-color: rgb(199, 199, 199);
+  background-color: rgb(221, 221, 221);
 }
 .list-todo li {
   padding: 8px;
@@ -385,14 +386,92 @@ section:nth-child(even) {
 }
 @keyframes todo-animate {
   0% {
+    width: 80%;
     top: -20px;
-    opacity: 0;
   }
   100% {
+    width: 100%;
     top: 0;
-    opacity: 1;
   }
 }
+/* seven End here */
+/* eight START here */
+.eight .slider-container {
+  width: 70%;
+  margin: auto;
+  height: 230px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 5px 5px 20px -10px;
+  position: relative;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+.eight .sliding-box {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  place-items: center;
+  transition: all 0.3s;
+  background-color: rgb(238, 238, 238);
+}
+.eight .para {
+  padding: 20px;
+}
+.eight .sliding-box img {
+  width: 60%;
+  height: 60%;
+  align-self: center;
+}
+.eight .right-arrow {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-0%, -50%);
+}
+.eight .left-arrow {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translate(-0%, -50%);
+}
+.eight .arrow {
+  display: none;
+  place-items: center;
+  background-color: rgba(197, 197, 197, 0.623);
+  transition: all 0.3s;
+  outline: none;
+  border: none;
+  padding: 5px;
+}
+.eight .arrow img {
+  width: 100%;
+  height: 100%;
+}
+.eight .left-arrow img {
+  transform: rotate(180deg);
+}
+.eight .arrow img:hover {
+  /* opacity: .; */
+  filter: invert();
+  cursor: pointer;
+}
+.eight .arrow img:active {
+  /* opacity: .; */
+  filter: none;
+}
+.eight .slider-container:hover .arrow {
+  display: grid;
+}
+.eight .name {
+  padding: 7px 0;
+}
+/* eight End here */
+/* nine START here */
 /* media */
 @media only screen and (max-width: 950px) {
   .con {
@@ -412,6 +491,7 @@ section:nth-child(even) {
   }
   .seven .input {
     width: 95%;
+    margin-bottom: 5px;
   }
   .list-todo {
     width: 90%;
@@ -419,9 +499,20 @@ section:nth-child(even) {
   .list-todo h2 {
     font-size: 0.9rem;
   }
-  .notice{
+  .notice {
     display: none;
   }
+  .eight .slider-container {
+    width: 85%;
+    height: 250px;
+  }
+  .eight .sliding-box {
+    grid-template-columns: 1fr;
+    grid-template-rows:80px auto;
+  }
+  .eight .para {
+  padding:0px 10px;
+}
 }
 .notice {
   position: fixed;
@@ -431,3 +522,4 @@ section:nth-child(even) {
   border-radius: 10px;
   background-color: rgba(255, 127, 80, 0.644);
 }
+/* minarulak */

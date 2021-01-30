@@ -619,14 +619,14 @@ let doneCon = document.querySelector(".done");
 doneCon.addEventListener("click", () => {
   doneCon.style.height = "300px";
   pendingCon.style.height = "100px";
-  doneCon.style.boxShadow = "0px 0px 25px -10px";
+  doneCon.style.boxShadow = "2px 2px 25px -10px";
   pendingCon.style.boxShadow = "none";
 });
 // make active container
 pendingCon.addEventListener("click", () => {
   pendingCon.style.height = "300px";
   doneCon.style.height = "100px";
-  pendingCon.style.boxShadow = "0px 0px 25px -10px";
+  pendingCon.style.boxShadow = "2px 2px 25px -10px";
   doneCon.style.boxShadow = "none";
 });
 
@@ -702,19 +702,19 @@ const createTodoList = () => {
   rightBtn.appendChild(imgRight);
   delBtn.appendChild(imgDel);
 };
-const removingTodo = (element)=>{
+const removingTodo = (element) => {
   // for better user exprieance.....create some animation before removing
   element.style.height = "0px";
   element.style.padding = "0px";
   element.style.margin = "0px";
   element.style.overflow = "hidden";
-}
-const addingTodo = (element)=>{
+};
+const addingTodo = (element) => {
   // for better user exprieance.....create some animation before adding
   element.style.height = "auto";
   element.style.padding = "8px";
   element.style.margin = "0 0 8px 0";
-}
+};
 const deleteTodo = (e) => {
   let savedData = localStorage.getItem("saved-todo");
   if (savedData == null) {
@@ -737,7 +737,7 @@ const deleteTodo = (e) => {
     });
     todos.splice(del, 1);
     localStorage.setItem("saved-todo", JSON.stringify(todos));
-    removingTodo(currentElement.parentElement)
+    removingTodo(currentElement.parentElement);
     setTimeout(() => {
       currentElement.parentElement.remove();
     }, 300);
@@ -772,18 +772,18 @@ const toggleTodo = (e) => {
     if (
       currentElement.parentElement.parentElement.classList.contains("pending")
     ) {
-      removingTodo(currentElement.parentElement)
+      removingTodo(currentElement.parentElement);
       setTimeout(() => {
         let complete = document.adoptNode(currentElement.parentElement);
         doneCon.appendChild(complete);
-       addingTodo(currentElement.parentElement)
+        addingTodo(currentElement.parentElement);
       }, 300);
     } else {
-      removingTodo(currentElement.parentElement)
+      removingTodo(currentElement.parentElement);
       setTimeout(() => {
         let complete = document.adoptNode(currentElement.parentElement);
         pendingCon.appendChild(complete);
-        addingTodo(currentElement.parentElement)
+        addingTodo(currentElement.parentElement);
       }, 300);
     }
   }
@@ -801,8 +801,8 @@ userInput.addEventListener("keypress", (e) => {
   }
 });
 pendingCon.addEventListener("click", (e) => {
-  // deleting todo 
-  // complete todo 
+  // deleting todo
+  // complete todo
   deleteTodo(e);
   toggleTodo(e);
 });
@@ -811,4 +811,80 @@ doneCon.addEventListener("click", (e) => {
   // uncompleting todo
   deleteTodo(e);
   toggleTodo(e);
+});
+// seven  is End here...
+// eight START here=>
+let userProfile = [
+  {
+    img: "./img/man (2).svg",
+    userName: "Minarulak",
+    about:
+      "sit amet consectetur, adipisicing elit. Cumque necessitatibus accusantium, voluptate mollitia facilis ipsum in",
+  },
+  {
+    img: "./img/user.svg",
+    userName: "Rahul sharma",
+    about:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa veniam nam, accusamus magni voluptd labore tempore rem delectus quam.",
+  },
+  {
+    img: "./img/man.svg",
+    userName: "Bijay singh",
+    about:
+      "sit amet consectetur, adipisicing elit. Cumque necessitatibus accusantium, voluptate mollitia facilis ipsum in",
+  },
+  {
+    img: "./img/user.svg",
+    userName: "Adittaya",
+    about:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa veniam nam, accusamus magni voluptd labore tempore rem delectus quam.",
+  },
+];
+const slidingBox = document.querySelector(".sliding-box");
+const userImg = document.querySelector(".user-img");
+const userName = document.querySelector(".name");
+const aboutUser = document.querySelector(".about");
+let slidingNumber = 0;
+userImg.src = userProfile[slidingNumber].img;
+userName.textContent = userProfile[slidingNumber].userName;
+aboutUser.textContent = userProfile[slidingNumber].about;
+const slidingRight = document.querySelector(".right-arrow");
+const slidingLeft = document.querySelector(".left-arrow");
+slidingRight.addEventListener("click", () => {
+  if (slidingNumber < userProfile.length-1) {
+    slidingNumber++;
+  }else{
+    slidingNumber = 0
+  }
+  slidingBox.style.transform = "translateX(-100%)"
+  slidingBox.style.visibility="hidden"
+  setTimeout(() => {
+    slidingBox.style.transform = "translateX(100%)"
+    userImg.src = userProfile[slidingNumber].img;
+    userName.textContent = userProfile[slidingNumber].userName;
+    aboutUser.textContent = userProfile[slidingNumber].about;
+    setTimeout(() => {
+      slidingBox.style.visibility="visible"
+      slidingBox.style.transform = "translateX(0)"
+    }, 300);
+  }, 300);
+});
+slidingLeft.addEventListener("click", () => {
+  if (slidingNumber!==0) {
+    slidingNumber--;
+  }else{
+    slidingNumber = 3
+  }
+  slidingBox.style.transform="translateX(100%)"
+  slidingBox.style.visibility="hidden"
+  setTimeout(() => {
+    slidingBox.style.transform="translateX(-100%)"
+    userImg.src = userProfile[slidingNumber].img;
+    userName.textContent = userProfile[slidingNumber].userName;
+    aboutUser.textContent = userProfile[slidingNumber].about;
+    setTimeout(() => {
+      slidingBox.style.transform="translateX(0)"
+      slidingBox.style.visibility="visible"
+    }, 300);    
+  }, 300);
 });
