@@ -79,7 +79,7 @@ animate.addEventListener("click", () => {
 });
 changeColor.addEventListener("click", () => {
   let randomColor = () => {
-    return Math.floor(Math.random() * 256);
+    return ~~(Math.random() * 256);
   };
   let box = document.querySelector(".inside-box");
   box.style.backgroundColor = `rgb(${randomColor()},${randomColor()},${randomColor()})`;
